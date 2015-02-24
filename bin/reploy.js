@@ -97,7 +97,7 @@ function handleArguments(env) {
 	}
 
 	var reployInst = require(env.modulePath),
-		templateDir = env.modulePath + '/templates';
+		templateDir = env.cwd + '/node_modules/reploy/templates';
 
 	process.nextTick(function () {
 		if (task === 'init') {
