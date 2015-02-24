@@ -80,6 +80,10 @@ This tool is in active development. Short list of planned releases:
 * Revisit the logging system and implement a robust application-wide logging system.
 * Allow custom tasks to hook into the logging system.
 
+#### v0.5.0
+
+* Add slack integration.
+
 ## License
 
 The MIT License (MIT)
