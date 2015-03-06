@@ -8,21 +8,19 @@ function Reploy() {
 // setup, prepare for launch
 Reploy.prototype.init = function (templateDir, logger) {
 
-	var that = this;
-	this.logger = logger;
-
 	// copy the reploy.json template file to the cwd
+	console.log(templateDir);
 	fs.readFile(templateDir + '/reploy.json.tmpl', function (err, data) {
-		if (err) that.logger.error('unable to locate reploy.json template');
+		if (err) logger.error('unable to locate reploy.json template');
 		else {
 			fs.writeFile('./reploy.json', data, { flag: 'wx' }, function (err) {
 				if (err) {
 					if (err.code === 'EEXIST')
-						that.logger.error('reploy.json already exists!');
+						logger.error('reploy.json already exists!');
 					else
-						that.logger.error(err);
+						logger.error(err);
 				} else
-					that.logger.log('created reploy.json')
+					logger.log('created reploy.json')
 			});
 		}
 	});
@@ -30,8 +28,8 @@ Reploy.prototype.init = function (templateDir, logger) {
 };
 
 // instantiate the deployer
-Reploy.prototype.setStage = function (stage) {
-	this._deployer = new Deployer(stage, this.logger);
+Reploy.prototype.setStage = function (stage, logger) {
+	this._deployer = new Deployer(stage, logger);
 };
 
 // execute the deploy task

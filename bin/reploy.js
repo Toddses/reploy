@@ -103,7 +103,7 @@ function handleArguments(env) {
 		if (task === 'init') {
 			reployInst.init(templateDir, logger);
 		} else {
-			reployInst.setStage(stage);
+			reployInst.setStage(stage, logger);
 			//execute the deployment task
 			logger.log('deploy to ' + stage);
 		}
