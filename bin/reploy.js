@@ -19,7 +19,7 @@ var cli = new Liftoff({
 	extensions: interpret.jsVariants
 });
 
-// setup 
+// setup
 var cliPackage  = require('../package');
 var versionFlag = argv.v || argv.version;
 var tasks       = argv._;
@@ -106,6 +106,7 @@ function handleArguments(env) {
 			reployInst.setStage(stage, logger);
 			//execute the deployment task
 			logger.log('deploy to ' + stage);
+            reployInst.deploy();
 		}
 	});
 }
