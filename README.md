@@ -1,4 +1,4 @@
-# reploy
+### reploy
 
 Command line tool for [Capistrano](http://capistranorb.com/) style deployments in multi-server environments over SSH. And hey, its a NodeJS package!
 
