@@ -14,7 +14,7 @@ Install globally:
 
 In your project's directory, run the initializer:
 
-    $cd /path/to/your/project
+    $ cd /path/to/your/project
 	$ reploy init
 
 Edit the `reploy.json` file with your various settings and stages.
