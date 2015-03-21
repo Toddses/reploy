@@ -2,7 +2,7 @@
 
 Command line tool for [Capistrano](http://capistranorb.com/) style deployments in multi-server environments over SSH. And hey, its a NodeJS package!
 
-This tool aims to be as comprehensive as possible. Add any issues or feature requests to the [GitHub issues](https://github.com/Toddses/reploy/issues)!
+Add any issues or feature requests to the [GitHub issues](https://github.com/Toddses/reploy/issues)!
 
 ## Installation
 
@@ -12,12 +12,9 @@ Install globally:
 
 	$ npm install -g reploy
 
-Install it locally as a dev dependency in your project directory:
+In your project's directory, run the initializer:
 
-	$ npm install reploy --save-dev
-
-Run the initializer:
-
+    $cd /path/to/your/project
 	$ reploy init
 
 Edit the `reploy.json` file with your various settings and stages.
@@ -77,12 +74,12 @@ This tool is in active development. Short list of planned releases:
 
 #### v0.4.0
 
-* Revisit the logging system and implement a robust application-wide logging system.
-* Allow custom tasks to hook into the logging system.
+* Add slack integration.
 
 #### v0.5.0
 
-* Add slack integration.
+* Revisit the logging system and implement a robust application-wide logging system.
+* Allow custom tasks to hook into the logging system.
 
 ## License
 
