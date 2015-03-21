@@ -1,6 +1,6 @@
 {
   "name": "reploy",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Deploy code in multi-server environments over SSH",
   "main": "index.js",
   "bin": {
