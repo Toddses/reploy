@@ -4,7 +4,6 @@
 var fs        = require('fs'),
 	chalk     = require('chalk'),
 	argv      = require('minimist')(process.argv.slice(2)),
-	semver    = require('semver'),
 	interpret = require('interpret'),
 	Liftoff   = require('liftoff'),
 	Deployer  = require('../lib/deployer'),
@@ -50,9 +49,8 @@ cli.on('respawn', function (flags, child) {
 
 cli.launch({
 	cwd: argv.cwd,
-	configPath: argv.gulpfile,
+	configPath: argv.reployfile,
 	require: argv.require
-	//completion: argv.completion
 }, handleArguments);
 
 // the actual logic
@@ -65,39 +63,15 @@ function handleArguments(env) {
 		process.exit(0);
 	}
 
-	if (!env.modulePath) {
-		logger.error('Local reploy not found in ' + env.cwd);
-		logger.error('Try running: npm install reploy')
-		process.exit(1);
-	}
-
-	// check for semver difference between cli and local installation
-	if (semver.gt(cliPackage.version, env.modulePackage.version)) {
-		logger.warn('reploy version mismatch');
-		logger.warn('CLI reploy is ' + cliPackage.version);
-		logger.warn('Local reploy is ' + env.modulePackage.version);
-	}
-
-	// reployfile is not required, so just inform the user we aren't using one
-	if (!env.configPath && task !== 'init') {
-		logger.warn('No reployfile found. Proceeding without reployfile.');
-	}
-
-	// chdir before requiring gulpfile to make sure
+	// chdir before requiring reployfile to make sure
 	// we let them chdir as needed
 	if (process.cwd() !== env.cwd) {
 		process.chdir(env.cwd);
 		logger.log('Working directory changed to ' + env.cwd);
 	}
 
-	// this is what actually loads up the reployfile
-	if (env.configPath && task !== 'init') {
-		require(env.configPath);
-		logger.log('Using reployfile ' + env.configPath);
-	}
-
-	var reployInst = require(env.modulePath),
-		templateDir = env.cwd + '/node_modules/reploy/templates';
+	var reployInst = require('../index.js'),
+		templateDir = __dirname + '/../templates';
 
 	process.nextTick(function () {
 		if (task === 'init') {
